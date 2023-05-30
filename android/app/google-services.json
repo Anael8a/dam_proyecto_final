@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "666672497487",
+    "project_id": "proyecto-final-dam-d673f",
+    "storage_bucket": "proyecto-final-dam-d673f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666672497487:android:da00e14873ff05c5ad3b3a",
+        "android_client_info": {
+          "package_name": "com.example.dam_proyecto_final"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-pD_9JzUhy692GIbW3eJlJDnsi95gf7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
