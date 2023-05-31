@@ -109,7 +109,7 @@ class _InicioSeccionState extends State<InicioSeccion> {
 
                   onPressed: ()async{
                     await InsertarUsuario (usuer.text, correo.text, pass.text);
-                   await Navigator.push(context, MaterialPageRoute(builder:(context) => Home(),));
+                   await Navigator.push(context, MaterialPageRoute(builder:(context) => Home(idReceta: ''),));
 
                   },child: Text("Sing In"),
 

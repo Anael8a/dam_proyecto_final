@@ -1,4 +1,5 @@
 import 'package:dam_proyecto_final/pages/home.dart';
+import 'package:dam_proyecto_final/pages/infogeneral.dart';
 import 'package:dam_proyecto_final/pages/iniciosecion.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +24,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.teal,
-      ),
-      home: InicioSeccion(),
+      ),initialRoute: '/',
+    routes: {
+      '/': (context) => const Home(idReceta: ''),
+
+      '/infoGeneral': (context) => const InfoGeneral(),
+    }
     );
   }
 }

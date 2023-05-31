@@ -1,62 +1,77 @@
 import 'package:dam_proyecto_final/pages/agregarreceta.dart';
+import 'package:dam_proyecto_final/pages/infogeneral.dart';
+import 'package:dam_proyecto_final/services/database.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+final String idReceta;
+  const Home({Key? key, required this.idReceta}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  List<Post> post = [];
   @override
   Widget build(BuildContext context) {
+    String idReceta = widget.idReceta;
       return Scaffold(
         appBar: AppBar( title: Text("Instagram post"),),
-        body: Container(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("titulo del post", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),textAlign:TextAlign.center),
-              SizedBox(height: 8.0),
-              Text("Descripcion del post", style: TextStyle(fontSize: 15),),
-              SizedBox(height: 16.0,),
-              Row(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7rCgDVj7TxXRBtbgI_hoCn7sxKsaOWuNelw&usqp=CAU'),
-                    radius: 20.0,
+        body: FutureBuilder(
+          future: getRecetas(widget.idReceta),
+          builder: ((context,snapshot) {
+            return ListView.builder(
+                itemCount: snapshot.data?.length,
+                itemBuilder: (context, index){
+              return ListTile(
+
+                title: Text(snapshot.data?[index]['nombre'] ?? '', style:
+                  TextStyle(fontWeight: FontWeight.bold),),
+              subtitle:
+                  Text(
+
+                          'Descripcion: ${snapshot.data?[index]['descripcion']??''}\n'
+                        'Personas:${snapshot.data?[index]['personas']??''}\n'
+                        'Tiempo:${snapshot.data?[index]['tiempoE']??''}\n'
                   ),
-                  SizedBox(width: 8.0),
-                  Text("nombre usuario", style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),),
-                ],
-              ),
-              SizedBox(height: 16,),
-              Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTVkjVLSiUQb8V3Sm_Gn65a6ETDR3f2rZ7uA&usqp=CAU',
-              fit: BoxFit.cover,
-                width: double.infinity,
-                height: 200.0,
-              ),
-
-              SizedBox(height: 16.0,),
-              Row(
-                children: [
-                  Icon(Icons.favorite),
-                  SizedBox(width: 8.0,),
-                  Text("100 likes"),
-                ],
-              ),
 
 
-            ],
-          ),
-          
-        ),
+               leading: Image.network(snapshot.data?[index]['imageUrl']??'',width: 150, height: 150,),
+                onTap:()async{
+                    await Navigator.pushNamed(context, '/infoGeneral', arguments: {
+                      nombre:snapshot.data?[index]["nombre"],
+                      "descripcion":snapshot.data?[index]["descripcion"],
+                      "tiempoE":snapshot.data?[index]["TiempoE"],
+                      "personas":snapshot.data?[index]["personas"],
+                      "ingredientes":snapshot.data?[index]["ingredientes"],
+                      "pasosSeguir":snapshot.data?[index]["pasosSeguir"],
+                      "imageUrl":snapshot.data?[index]["imageUrl"],
+                    });
+
+                  },
+              );
+
+            }
+            );
+          }
+          )),
         floatingActionButton: FloatingActionButton(onPressed: ()async{
-            await Navigator.push(context, MaterialPageRoute(builder: (builder)=> AgregarReceta()));
+            await Navigator.push(context, MaterialPageRoute(builder: (builder)=> AgregarReceta(),),).then((newPost) {
+              if (newPost != null){
+                setState(() {
+                  post.add(newPost);
+                });
+              }
+            });
         },
         child: Icon(Icons.add),),
       );
   }
+
+}
+class Post {
+  final String text;
+
+  Post({required this.text});
 }
