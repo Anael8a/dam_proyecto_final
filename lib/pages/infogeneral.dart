@@ -15,6 +15,7 @@ TextEditingController nombre= TextEditingController();
 TextEditingController descripcion= TextEditingController();
 TextEditingController imageUrl= TextEditingController();
 TextEditingController ingredientes= TextEditingController();
+
 TextEditingController pasosSeguir= TextEditingController();
 TextEditingController personas= TextEditingController();
 TextEditingController tiempoE= TextEditingController();
