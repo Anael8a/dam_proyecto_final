@@ -40,9 +40,9 @@ class _HomeState extends State<Home> {
                leading: Image.network(snapshot.data?[index]['imageUrl']??'',width: 150, height: 150,),
                 onTap:()async{
                     await Navigator.pushNamed(context, '/infoGeneral', arguments: {
-                      nombre:snapshot.data?[index]["nombre"],
+                      "nombre":snapshot.data?[index]["nombre"],
                       "descripcion":snapshot.data?[index]["descripcion"],
-                      "tiempoE":snapshot.data?[index]["TiempoE"],
+                      "tiempoE":snapshot.data?[index]["tiempoE"],
                       "personas":snapshot.data?[index]["personas"],
                       "ingredientes":snapshot.data?[index]["ingredientes"],
                       "pasosSeguir":snapshot.data?[index]["pasosSeguir"],

@@ -34,7 +34,7 @@ Future<List> getRecetas(String idReceta) async{
     final recetaObjet = {
       "nombre":data["nombre"],
       "descripcion":data["descripcion"],
-      "tiempoE":data["TiempoE"],
+      "tiempoE":data["tiempoE"],
       "personas":data["personas"],
       "ingredientes":data["ingredientes"],
       "pasosSeguir":data["pasosSeguir"],
