@@ -1,4 +1,5 @@
 import 'package:dam_proyecto_final/pages/home.dart';
+import 'package:dam_proyecto_final/pages/mainhome.dart';
 import 'package:flutter/material.dart';
 
 import '../services/database.dart';
@@ -24,8 +25,8 @@ class _InicioSeccionState extends State<InicioSeccion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Inicio Seccion")),
-      backgroundColor: Colors.teal,
+
+      backgroundColor: Colors.tealAccent,
       body: ListView(
         children: <Widget> [
           Column(
@@ -34,7 +35,7 @@ class _InicioSeccionState extends State<InicioSeccion> {
               CircleAvatar(
                 radius: 100.0,
                 backgroundColor: Colors.grey,
-                backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7rCgDVj7TxXRBtbgI_hoCn7sxKsaOWuNelw&usqp=CAU"),
+                backgroundImage: NetworkImage("https://imgur.com/sbZAVHu.jpg"),
               ),
               Text(
                 'Login',
@@ -51,7 +52,6 @@ class _InicioSeccionState extends State<InicioSeccion> {
               ),
               TextField(
                 enableInteractiveSelection: false,
-                autofocus: true,
                 textCapitalization: TextCapitalization.characters,
                 controller: usuer,
                 decoration: InputDecoration(hintText: 'USER',
@@ -109,9 +109,9 @@ class _InicioSeccionState extends State<InicioSeccion> {
 
                   onPressed: ()async{
                     await InsertarUsuario (usuer.text, correo.text, pass.text);
-                   await Navigator.push(context, MaterialPageRoute(builder:(context) => Home(idReceta: ''),));
+                   await Navigator.push(context, MaterialPageRoute(builder:(context) => MainHome()));
 
-                  },child: Text("Sing In"),
+                  },child: Text("Inicio Seccion"),
 
                 ),
               )

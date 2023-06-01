@@ -91,3 +91,36 @@ Future<void> InsertarUsuario(
 
   });
 }
+
+Future<List> getUsers() async{
+  List user = [];
+  QuerySnapshot querySnapshot= await bd.collection("usuarios").get();
+  for(var doc in querySnapshot.docs){
+    final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    final userObject = {
+      "usuario":data["usuario"],
+      "correo":data["correo"],
+    };
+    user.add(userObject);
+  }
+  await Future.delayed(Duration(seconds: 2));
+  return user;
+}
+
+
+//consulta 4
+Future<List<Map<String, dynamic>>> getPorReceta(String nombre) async {
+  List<Map<String, dynamic>> recetas = [];
+
+  QuerySnapshot querySnapshot = await bd
+      .collection('receta')
+      .where('nombre', isEqualTo: nombre)
+      .get();
+
+  for (var doc in querySnapshot.docs) {
+    recetas.add(doc.data() as Map<String, dynamic>);
+  }
+
+  return recetas;
+}
+

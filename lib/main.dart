@@ -1,6 +1,7 @@
 import 'package:dam_proyecto_final/pages/home.dart';
 import 'package:dam_proyecto_final/pages/infogeneral.dart';
 import 'package:dam_proyecto_final/pages/iniciosecion.dart';
+import 'package:dam_proyecto_final/pages/mainhome.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
       ),initialRoute: '/',
     routes: {
-      '/': (context) => const Home(idReceta: ''),
+      '/': (context) => const InicioSeccion(),
 
       '/infoGeneral': (context) => const InfoGeneral(),
     }

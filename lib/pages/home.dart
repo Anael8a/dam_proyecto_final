@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     String idReceta = widget.idReceta;
       return Scaffold(
-        appBar: AppBar( title: Text("Instagram post"),),
+        appBar: AppBar( title: Text("Bienvenido"),centerTitle: true,),
         body: FutureBuilder(
           future: getRecetas(widget.idReceta),
           builder: ((context,snapshot) {
